@@ -18,10 +18,11 @@ async def nkodice(message: discord.Message):
     rolls = random.choices(('う', 'ま', 'ち', 'ん', 'こ', 'お'), k=5)
     roles = []
 
-    if rolls.count('お') >= 1 and rolls.count('ち') >= 2 and rolls.count('ん') >= 2:
-        roles.append('OCHINCHIN')
-    elif rolls.count('ち') >= 2 and rolls.count('ん') >= 2:
-        roles.append('CHINCHIN')
+    if rolls.count('う') >= 1 and rolls.count('ん') >= 1 and rolls.count('ち'):
+        roles.append('UNCHI')
+
+    if rolls.count('う') >= 1 and rolls.count('ん') >= 1 and rolls.count('こ'):
+        roles.append('UNKO')
 
     if rolls.count('お') >= 1 and rolls.count('ま') >= 1 and rolls.count('ん') >= 1 and rolls.count('こ'):
         roles.append('OMANKO')
@@ -31,11 +32,11 @@ async def nkodice(message: discord.Message):
     if rolls.count('ち') >= 1 and rolls.count('ん') and rolls.count('こ'):
         roles.append('CHINKO')
 
-    if rolls.count('う') >= 1 and rolls.count('ん') >= 1 and rolls.count('ち'):
-        roles.append('UNCHI')
+    if rolls.count('お') >= 1 and rolls.count('ち') >= 2 and rolls.count('ん') >= 2:
+        roles.append('OCHINCHIN')
+    elif rolls.count('ち') >= 2 and rolls.count('ん') >= 2:
+        roles.append('CHINCHIN')
 
-    if rolls.count('う') >= 1 and rolls.count('ん') >= 1 and rolls.count('こ'):
-        roles.append('UNKO')
     
     for r in rolls:
         await message.channel.send(r)
